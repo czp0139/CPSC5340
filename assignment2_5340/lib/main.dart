@@ -25,7 +25,6 @@ class ListItem extends StatelessWidget {
 }
 
 // onChanged is a callback so that the total can be updated as the user interacts with buttons in the tip and the counter widgets. 
-
 class CounterButton extends StatefulWidget {
   final ValueChanged<int> onChanged;
   const CounterButton({super.key, required this.onChanged});
@@ -120,30 +119,7 @@ class _AddTipState extends State<AddTip> {
   }
 }
 
-class TotalAmt extends StatefulWidget {
-  const TotalAmt({super.key});
-
-  @override
-  State<TotalAmt> createState() => _TotalAmtState();
-}
-
-class _TotalAmtState extends State<TotalAmt> {
-  int totalAmount = 0;
-  
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Text("Total Amount:"),
-        Text("\$$totalAmount"),
-      ],
-    );
-  }
-}
-
 // the confirmation button is the Order widget. It shows an Alert once clicked. 
-
 class Order extends StatelessWidget {
   const Order({super.key});
 
@@ -186,7 +162,6 @@ class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
 
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
@@ -223,7 +198,6 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-
   // Widget to create divider between menu items to avoid redudant code
   // Dividers are a new element I explored to seperaute the menu items
   Widget _buildMenuDivider() {
@@ -249,46 +223,37 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
 
-
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-
             // the four order items are containted in this card with their icon, name and price. 
             Card(
               child: Column(
                 children: [
-
-                  _buildMenuItem(Icons.local_cafe, "Latte", latteCost, latteValue, (newValue) { setState(() { latteValue = newValue;}); }),
+                  _buildMenuItem(Icons.coffee, "Latte", latteCost, latteValue, (newValue) { setState(() { latteValue = newValue;}); }),
                   _buildMenuDivider(),
 
                   _buildMenuItem(Icons.local_cafe, "Cappuccino", cappuccinoCost, cappuccinoValue, (newValue) { setState(() { cappuccinoValue = newValue;}); }),
                   _buildMenuDivider(),
 
-                  _buildMenuItem(Icons.local_cafe, "Cold Brew", coldBrewCost, coldBrewValue, (newValue) { setState(() { coldBrewValue = newValue;}); }),
+                  _buildMenuItem(Icons.local_drink, "Cold Brew", coldBrewCost, coldBrewValue, (newValue) { setState(() { coldBrewValue = newValue;}); }),
                   _buildMenuDivider(),
 
-                  _buildMenuItem(Icons.local_cafe, "Drip Coffee", dripCoffeeCost, dripCoffeeValue, (newValue) { setState(() { dripCoffeeValue = newValue;}); }),
+                  _buildMenuItem(Icons.coffee_maker, "Drip Coffee", dripCoffeeCost, dripCoffeeValue, (newValue) { setState(() { dripCoffeeValue = newValue;}); }),
                 ], // Children of menu card
               ),
             ),
-          
             SizedBox(height: 16.0),
-
             Card(
               child: AddTip(onTipChanged: (newTipAmount) { setState(() { tipAmount = newTipAmount; }); })
-  
             ),
-
             SizedBox(height: 16.0),
-
             Card (
               // The TextField is a new widget I explored. It allows the user to input their own text
               // The checkbox list tile is a new widget that I used to let the user select if they want non-diary milk
               child: Column(
               children:[
-
                 CheckboxListTile(
                     title: const Text('Non-Dairy Milk, Please!'),
                     subtitle: const Text('Give details in specific instructions.'),
@@ -299,7 +264,6 @@ class _MyHomePageState extends State<MyHomePage> {
                       });
                     },
                 ),
-
                 TextField (
                   decoration: InputDecoration(
                   labelText: 'Special Instructions',
@@ -310,9 +274,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ] 
             ),
             ),
-
             SizedBox(height: 16.0),
-
             Card(
               child: 
               ListTile( 
@@ -320,7 +282,6 @@ class _MyHomePageState extends State<MyHomePage> {
                 trailing: Order()
             )
             ),
-
           ],
         ), 
       )
