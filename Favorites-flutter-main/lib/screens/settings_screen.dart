@@ -74,14 +74,8 @@ class SettingsScreen extends StatelessWidget {
 
               ),
               SizedBox(height: 16),
-
               ClearFav(), 
-              // ElevatedButton(
-              //   onPressed: () {
-              //     favoritesProvider.clearFavorites();
-              //   },
-              //   child: Text("Clear Favorites"),
-              // ),
+
             ],
           ),
         ),

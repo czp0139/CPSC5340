@@ -28,8 +28,6 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
           children: [          
             SizedBox(height: 16),
 
-
-// need to change this so instead of doing the if not, and shrinsk - need to maka  list of favs
             if (context.watch<FavoritesProvider>().cities.isNotEmpty)
 
               Text("Favorite Cities:", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
